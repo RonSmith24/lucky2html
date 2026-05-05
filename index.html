@@ -34,7 +34,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Grid texture */
 body::before {
   content: '';
   position: fixed;
@@ -54,6 +53,143 @@ body::before {
   max-width: 860px;
   margin: 0 auto;
   padding: 0 24px 80px;
+}
+
+/* ── QURAN BACKSOUND BAR ── */
+.quran-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  border-top: 2px solid var(--gold);
+  padding: 10px 24px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+}
+
+.quran-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.quran-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.quran-title {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 2px;
+}
+
+.quran-surah {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.quran-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.quran-btn {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(201,168,76,0.4);
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #fff;
+  font-size: 14px;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.quran-btn:hover {
+  background: rgba(201,168,76,0.3);
+  border-color: var(--gold);
+}
+
+.quran-btn.play-btn {
+  width: 40px;
+  height: 40px;
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #0f2027;
+  font-size: 16px;
+}
+
+.quran-btn.play-btn:hover {
+  background: #e8c05a;
+}
+
+.quran-volume {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.quran-volume input[type="range"] {
+  width: 70px;
+  height: 3px;
+  accent-color: var(--gold);
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  min-height: unset;
+}
+
+.quran-progress-wrap {
+  flex: 1;
+  min-width: 60px;
+  max-width: 140px;
+}
+
+.quran-progress {
+  width: 100%;
+  height: 3px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.quran-progress-fill {
+  height: 100%;
+  background: var(--gold);
+  border-radius: 2px;
+  width: 0%;
+  transition: width 0.5s linear;
+}
+
+.quran-label-next {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: rgba(255,255,255,0.4);
+  margin-top: 3px;
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .quran-progress-wrap { display: none; }
+  .quran-volume input[type="range"] { width: 50px; }
 }
 
 /* ── HEADER ── */
@@ -281,6 +417,21 @@ textarea { min-height: 90px; }
   min-height: 18px;
 }
 
+/* ── MODEL BADGE ── */
+.model-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  background: #e8f5e9;
+  border: 1px solid #81c784;
+  color: #1b5e20;
+  padding: 3px 10px;
+  border-radius: 40px;
+  margin-left: 10px;
+}
+
 /* ── OUTPUT SECTION ── */
 #output-section {
   display: none;
@@ -380,7 +531,6 @@ textarea { min-height: 90px; }
   word-break: break-word;
 }
 
-/* Scene cards inside script */
 .scene-card {
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -420,7 +570,6 @@ textarea { min-height: 90px; }
 
 .scene-col-text { color: var(--ink); line-height: 1.6; }
 
-/* Music / voice chips */
 .chip-row {
   display: flex;
   flex-wrap: wrap;
@@ -444,7 +593,6 @@ textarea { min-height: 90px; }
   color: #fff;
 }
 
-/* Invideo prompt box */
 .invideo-prompt {
   background: #0f1923;
   color: #7effc4;
@@ -457,12 +605,12 @@ textarea { min-height: 90px; }
   border-top: 1.5px solid #1e3a52;
 }
 
-/* Action bar */
 .action-bar {
   display: flex;
   gap: 12px;
   margin-top: 32px;
   flex-wrap: wrap;
+  margin-bottom: 80px;
 }
 
 .btn-action {
@@ -495,7 +643,6 @@ textarea { min-height: 90px; }
   box-shadow: 3px 3px 0 var(--border);
 }
 
-/* Error */
 .error-box {
   background: #fff0ee;
   border: 1.5px solid #e8a090;
@@ -508,10 +655,10 @@ textarea { min-height: 90px; }
   display: none;
 }
 
-/* Footer */
 footer {
   border-top: 1.5px solid var(--border);
   margin-top: 60px;
+  margin-bottom: 60px;
   padding-top: 24px;
   font-family: var(--font-mono);
   font-size: 11px;
@@ -520,7 +667,6 @@ footer {
   letter-spacing: 0.08em;
 }
 
-/* History sidebar placeholder */
 .history-strip {
   display: flex;
   gap: 10px;
@@ -559,14 +705,52 @@ footer {
 }
 
 .api-notice a { color: var(--accent); }
+
+/* Fallback notice */
+.fallback-notice {
+  background: #e8f4fd;
+  border: 1.5px solid #90caf9;
+  border-radius: var(--radius);
+  padding: 10px 16px;
+  margin-top: 12px;
+  font-size: 12px;
+  color: #0d47a1;
+  font-family: var(--font-mono);
+  display: none;
+}
 </style>
 </head>
 <body>
+
+<!-- ── QURAN BACKSOUND BAR ── -->
+<div class="quran-bar" id="quran-bar">
+  <div class="quran-icon">☪️</div>
+  <div class="quran-info">
+    <div class="quran-title">🎵 Murottal Al-Qur'an — Backsound</div>
+    <div class="quran-surah" id="quran-surah-name">Loading...</div>
+    <div class="quran-progress">
+      <div class="quran-progress-fill" id="quran-progress-fill"></div>
+    </div>
+  </div>
+  <div class="quran-controls">
+    <button class="quran-btn" onclick="prevSurah()" title="Previous">&#9664;</button>
+    <button class="quran-btn play-btn" id="quran-play-btn" onclick="togglePlay()" title="Play/Pause">▶</button>
+    <button class="quran-btn" onclick="nextSurah()" title="Next">&#9654;</button>
+    <div class="quran-volume">
+      🔊
+      <input type="range" id="quran-vol" min="0" max="1" step="0.05" value="0.4" oninput="setVolume(this.value)"/>
+    </div>
+  </div>
+</div>
+
+<!-- Hidden audio element -->
+<audio id="quran-audio" preload="none"></audio>
+
 <div class="wrap">
 
   <header>
     <div class="logo-block">
-      <div class="logo-tag">&#9654; VidForge AI — v2.1 (Free · ID Region Fix)</div>
+      <div class="logo-tag">&#9654; VidForge AI — v2.2 (Gemini 2.5 Flash · Auto-Fallback)</div>
       <h1>YouTube Video<br/><em>Generator</em></h1>
     </div>
     <div class="header-badge">
@@ -574,12 +758,10 @@ footer {
     </div>
   </header>
 
-  <!-- API Key Notice -->
   <div class="api-notice" id="api-notice">
     🎉 <strong>100% GRATIS — Tanpa Kartu Kredit!</strong> Pakai Google Gemini API. Cara dapat key: Buka <a href="https://aistudio.google.com/app/apikey" target="_blank">aistudio.google.com/app/apikey</a> → Login akun Google → Klik "Create API Key" → Copy → Paste di bawah. Key tersimpan di browser kamu, aman.
   </div>
 
-  <!-- History strip -->
   <div class="history-strip" id="history-strip" style="display:none"></div>
 
   <!-- FORM -->
@@ -674,6 +856,7 @@ footer {
     </div>
 
     <div class="error-box" id="error-box"></div>
+    <div class="fallback-notice" id="fallback-notice">ℹ️ Model utama (gemini-2.5-flash) tidak tersedia, beralih ke fallback: <strong id="fallback-model-name"></strong></div>
 
     <button class="btn-generate" id="btn-generate" onclick="generateVideo()">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
@@ -694,7 +877,6 @@ footer {
       <div class="output-meta" id="output-meta"></div>
     </div>
 
-    <!-- 1. Hook & Title -->
     <div class="out-block">
       <div class="out-block-head">
         <div class="out-block-label"><div class="dot dot-red"></div>HOOK & TITLE</div>
@@ -703,7 +885,6 @@ footer {
       <div class="out-block-body" id="hook-body"></div>
     </div>
 
-    <!-- 2. Script Scenes -->
     <div class="out-block">
       <div class="out-block-head">
         <div class="out-block-label"><div class="dot dot-blue"></div>FULL SCRIPT — SCENES</div>
@@ -712,7 +893,6 @@ footer {
       <div id="scenes-body" style="padding:16px"></div>
     </div>
 
-    <!-- 3. Visual & Footage Direction -->
     <div class="out-block">
       <div class="out-block-head">
         <div class="out-block-label"><div class="dot dot-gold"></div>VISUAL / FOOTAGE DIRECTION</div>
@@ -721,7 +901,6 @@ footer {
       <div class="out-block-body" id="visual-body"></div>
     </div>
 
-    <!-- 4. Voice & Music -->
     <div class="out-block">
       <div class="out-block-head">
         <div class="out-block-label"><div class="dot dot-green"></div>VOICE & MUSIC SETTINGS</div>
@@ -729,7 +908,6 @@ footer {
       <div class="chip-row" id="voice-music-chips"></div>
     </div>
 
-    <!-- 5. InVideo AI Prompt -->
     <div class="out-block">
       <div class="out-block-head">
         <div class="out-block-label"><div class="dot dot-red"></div>INVIDEO AI — PASTE PROMPT</div>
@@ -738,7 +916,6 @@ footer {
       <div class="invideo-prompt" id="invideo-prompt"></div>
     </div>
 
-    <!-- 6. YouTube SEO -->
     <div class="out-block">
       <div class="out-block-head">
         <div class="out-block-label"><div class="dot dot-blue"></div>YOUTUBE SEO PACKAGE</div>
@@ -756,17 +933,136 @@ footer {
   </div>
 
   <footer>
-    VidForge AI v2.1 · Built for Faceless YouTube Creators · Powered by Google Gemini 1.5 Flash (Free)
+    VidForge AI v2.2 · Built for Faceless YouTube Creators · Powered by Google Gemini 2.5 Flash (Free) · ☪️ Murottal Al-Qur'an
   </footer>
 </div>
 
 <script>
-// ── State ──
+// ══════════════════════════════════════════════════════
+//  QURAN BACKSOUND PLAYER
+// ══════════════════════════════════════════════════════
+
+// Playlist murottal Al-Qur'an dari mp3quran.net (CDN publik, gratis)
+// Qari: Mishary Rashid Alafasy (suara paling populer)
+const QARI_ID = 'Alafasy_128';
+const TOTAL_SURAHS = 114;
+
+// Daftar nama surah dengan terjemahan
+const SURAH_NAMES = [
+  "Al-Fatihah","Al-Baqarah","Ali 'Imran","An-Nisa","Al-Ma'idah",
+  "Al-An'am","Al-A'raf","Al-Anfal","At-Tawbah","Yunus",
+  "Hud","Yusuf","Ar-Ra'd","Ibrahim","Al-Hijr",
+  "An-Nahl","Al-Isra","Al-Kahf","Maryam","Ta-Ha",
+  "Al-Anbya","Al-Hajj","Al-Mu'minun","An-Nur","Al-Furqan",
+  "Ash-Shu'ara","An-Naml","Al-Qasas","Al-'Ankabut","Ar-Rum",
+  "Luqman","As-Sajdah","Al-Ahzab","Saba","Fatir",
+  "Ya-Sin","As-Saffat","Sad","Az-Zumar","Ghafir",
+  "Fussilat","Ash-Shura","Az-Zukhruf","Ad-Dukhan","Al-Jathiyah",
+  "Al-Ahqaf","Muhammad","Al-Fath","Al-Hujurat","Qaf",
+  "Adh-Dhariyat","At-Tur","An-Najm","Al-Qamar","Ar-Rahman",
+  "Al-Waqi'ah","Al-Hadid","Al-Mujadila","Al-Hashr","Al-Mumtahanah",
+  "As-Saf","Al-Jumu'ah","Al-Munafiqun","At-Taghabun","At-Talaq",
+  "At-Tahrim","Al-Mulk","Al-Qalam","Al-Haqqah","Al-Ma'arij",
+  "Nuh","Al-Jinn","Al-Muzzammil","Al-Muddaththir","Al-Qiyamah",
+  "Al-Insan","Al-Mursalat","An-Naba","An-Nazi'at","'Abasa",
+  "At-Takwir","Al-Infitar","Al-Mutaffifin","Al-Inshiqaq","Al-Buruj",
+  "At-Tariq","Al-A'la","Al-Ghashiyah","Al-Fajr","Al-Balad",
+  "Ash-Shams","Al-Layl","Ad-Duha","Ash-Sharh","At-Tin",
+  "Al-'Alaq","Al-Qadr","Al-Bayyinah","Az-Zalzalah","Al-'Adiyat",
+  "Al-Qari'ah","At-Takathur","Al-'Asr","Al-Humazah","Al-Fil",
+  "Quraysh","Al-Ma'un","Al-Kawthar","Al-Kafirun","An-Nasr",
+  "Al-Masad","Al-Ikhlas","Al-Falaq","An-Nas"
+];
+
+let currentSurah = Math.floor(Math.random() * 30) + 1; // mulai random dari 30 surah pertama
+let isPlaying = false;
+let audioEl = document.getElementById('quran-audio');
+
+function getSurahUrl(num) {
+  const padded = String(num).padStart(3, '0');
+  return `https://download.quranicaudio.com/quran/mishaari_raashid_al_3afaasee/${padded}.mp3`;
+}
+
+function updateQuranUI() {
+  document.getElementById('quran-surah-name').textContent =
+    `Surah ${currentSurah}: ${SURAH_NAMES[currentSurah - 1]}`;
+}
+
+function loadSurah(num, autoplay) {
+  currentSurah = ((num - 1 + TOTAL_SURAHS) % TOTAL_SURAHS) + 1;
+  audioEl.src = getSurahUrl(currentSurah);
+  audioEl.volume = parseFloat(document.getElementById('quran-vol').value);
+  updateQuranUI();
+  document.getElementById('quran-progress-fill').style.width = '0%';
+  if (autoplay) {
+    audioEl.play().catch(() => {});
+    isPlaying = true;
+    document.getElementById('quran-play-btn').innerHTML = '⏸';
+  }
+}
+
+function togglePlay() {
+  if (isPlaying) {
+    audioEl.pause();
+    isPlaying = false;
+    document.getElementById('quran-play-btn').innerHTML = '▶';
+  } else {
+    if (!audioEl.src || audioEl.src === window.location.href) {
+      loadSurah(currentSurah, true);
+    } else {
+      audioEl.play().catch(() => {});
+      isPlaying = true;
+      document.getElementById('quran-play-btn').innerHTML = '⏸';
+    }
+  }
+}
+
+function prevSurah() {
+  loadSurah(currentSurah - 1, isPlaying);
+}
+
+function nextSurah() {
+  loadSurah(currentSurah + 1, isPlaying);
+}
+
+function setVolume(val) {
+  audioEl.volume = parseFloat(val);
+}
+
+// Auto next surah when ended
+audioEl.addEventListener('ended', () => {
+  nextSurah();
+  audioEl.play().catch(() => {});
+});
+
+// Progress bar
+audioEl.addEventListener('timeupdate', () => {
+  if (audioEl.duration) {
+    const pct = (audioEl.currentTime / audioEl.duration) * 100;
+    document.getElementById('quran-progress-fill').style.width = pct + '%';
+  }
+});
+
+// Init UI (tidak autoplay — butuh interaksi user dulu)
+updateQuranUI();
+
+// ══════════════════════════════════════════════════════
+//  VIDFORGE AI — MAIN APP
+// ══════════════════════════════════════════════════════
+
+// Model list: utama + fallback chain
+const GEMINI_MODELS = [
+  'gemini-2.5-flash',
+  'gemini-2.0-flash',
+  'gemini-1.5-flash',
+  'gemini-1.5-flash-8b',
+];
+
 let selectedTone = 'Inspiring & Emotional';
-let history = JSON.parse(localStorage.getItem('vf_history') || '[]');
+let vfHistory = JSON.parse(localStorage.getItem('vf_history') || '[]');
 let lastOutput = null;
 
-// ── Tone pills ──
+// Tone pills
 document.querySelectorAll('.tone-pill').forEach(pill => {
   pill.addEventListener('click', () => {
     document.querySelectorAll('.tone-pill').forEach(p => p.classList.remove('active'));
@@ -775,7 +1071,7 @@ document.querySelectorAll('.tone-pill').forEach(pill => {
   });
 });
 
-// ── Load saved API key ──
+// Load saved API key
 const savedKey = localStorage.getItem('vf_api_key');
 if (savedKey) {
   document.getElementById('api-key').value = savedKey;
@@ -789,24 +1085,24 @@ document.getElementById('api-key').addEventListener('change', e => {
   }
 });
 
-// ── Render history ──
+// History
 function renderHistory() {
   const strip = document.getElementById('history-strip');
-  if (history.length === 0) { strip.style.display = 'none'; return; }
+  if (vfHistory.length === 0) { strip.style.display = 'none'; return; }
   strip.style.display = 'flex';
-  strip.innerHTML = history.slice(-8).reverse().map((h,i) =>
-    `<div class="history-chip" onclick="loadHistory(${history.length-1-i})">${h.topic.slice(0,40)}…</div>`
+  strip.innerHTML = vfHistory.slice(-8).reverse().map((h, i) =>
+    `<div class="history-chip" onclick="loadHistory(${vfHistory.length - 1 - i})">${h.topic.slice(0, 40)}…</div>`
   ).join('');
 }
 
 function loadHistory(idx) {
-  const h = history[idx];
+  const h = vfHistory[idx];
   renderOutput(h.output, h.topic, h.ts);
 }
 
 renderHistory();
 
-// ── Loading messages ──
+// Loading messages
 const loadingMessages = [
   'Analyzing your topic…',
   'Crafting viral hook…',
@@ -834,6 +1130,73 @@ function stopLoading() {
   clearInterval(loadInterval);
   document.getElementById('loading-bar').classList.remove('active');
   document.getElementById('loading-text').textContent = '';
+}
+
+// ── Gemini API Call with Auto-Fallback ──
+async function callGeminiWithFallback(apiKey, systemPrompt, userPrompt) {
+  const fallbackNotice = document.getElementById('fallback-notice');
+  const fallbackModelName = document.getElementById('fallback-model-name');
+  fallbackNotice.style.display = 'none';
+
+  for (let i = 0; i < GEMINI_MODELS.length; i++) {
+    const model = GEMINI_MODELS[i];
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+
+    try {
+      const resp = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{
+            parts: [{ text: systemPrompt + '\n\n' + userPrompt }]
+          }],
+          generationConfig: {
+            temperature: 0.9,
+            maxOutputTokens: 4000,
+          }
+        })
+      });
+
+      if (!resp.ok) {
+        const errData = await resp.json();
+        const errMsg = errData.error?.message || '';
+        // Jika 404 (model tidak ada) atau 429 quota, coba model berikutnya
+        if (resp.status === 404 || resp.status === 429 || errMsg.includes('not found') || errMsg.includes('deprecated')) {
+          console.warn(`Model ${model} unavailable (${resp.status}), trying fallback...`);
+          if (i > 0) {
+            fallbackNotice.style.display = 'block';
+            fallbackModelName.textContent = model;
+          }
+          continue;
+        }
+        // Error lain (API key salah, dll) — lempar langsung
+        throw new Error(errData.error?.message || `API Error ${resp.status}`);
+      }
+
+      const data = await resp.json();
+      const raw = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
+      if (!raw) throw new Error('Empty response from Gemini. Please try again.');
+
+      // Tunjukkan fallback notice jika bukan model utama
+      if (i > 0) {
+        fallbackNotice.style.display = 'block';
+        fallbackModelName.textContent = model;
+      }
+
+      return raw;
+
+    } catch (err) {
+      // Jika ini error network atau fetch error, coba berikutnya
+      if (err.message.includes('fetch') || err.message.includes('network') || err.message.includes('Failed to fetch')) {
+        console.warn(`Model ${model} fetch error, trying fallback...`);
+        continue;
+      }
+      // Error lain (JSON parse, API key) — lempar
+      throw err;
+    }
+  }
+
+  throw new Error('Semua model Gemini tidak tersedia saat ini. Coba lagi beberapa saat.');
 }
 
 // ── Main Generate ──
@@ -881,7 +1244,7 @@ Your output must be a valid JSON object with EXACTLY these keys:
   "invideo_prompt": "the complete ready-to-paste prompt for InVideo AI to generate this video",
   "youtube_title": "final optimized YouTube title",
   "youtube_description": "full 200-word YouTube description with keywords",
-  "tags": ["tag1", "tag2", ...15 tags],
+  "tags": ["tag1", "tag2", "...15 tags total"],
   "thumbnail_concept": "description of thumbnail — text overlay, background, colors, emotion"
 }
 
@@ -907,46 +1270,23 @@ Requirements:
 - Make it viral-worthy`;
 
   try {
-    const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
-    const resp = await fetch(geminiUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        contents: [{
-          parts: [{ text: systemPrompt + '\n\n' + userPrompt }]
-        }],
-        generationConfig: {
-          temperature: 0.9,
-          maxOutputTokens: 4000,
-        }
-      })
-    });
-
-    if (!resp.ok) {
-      const err = await resp.json();
-      throw new Error(err.error?.message || `API Error ${resp.status}`);
-    }
-
-    const data = await resp.json();
-    const raw = data.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
-    if (!raw) throw new Error('Empty response from Gemini. Please try again.');
+    const raw = await callGeminiWithFallback(apiKey, systemPrompt, userPrompt);
     const clean = raw.replace(/^```json\s*/,'').replace(/^```\s*/,'').replace(/```\s*$/,'').trim();
     const parsed = JSON.parse(clean);
 
     stopLoading();
     renderOutput(parsed, topic, new Date().toISOString());
 
-    // Save to history
-    history.push({ topic, output: parsed, ts: new Date().toISOString() });
-    if (history.length > 20) history = history.slice(-20);
-    localStorage.setItem('vf_history', JSON.stringify(history));
+    vfHistory.push({ topic, output: parsed, ts: new Date().toISOString() });
+    if (vfHistory.length > 20) vfHistory = vfHistory.slice(-20);
+    localStorage.setItem('vf_history', JSON.stringify(vfHistory));
     renderHistory();
 
   } catch (err) {
     stopLoading();
-    if (err.message.includes('JSON')) {
+    if (err.message.includes('JSON') || err.message.includes('parse')) {
       showError('AI returned unexpected format. Please try again.');
-    } else if (err.message.includes('API_KEY_INVALID') || err.message.includes('400')) {
+    } else if (err.message.includes('API_KEY_INVALID') || err.message.includes('400') || err.message.includes('invalid')) {
       showError('API Key tidak valid. Pastikan kamu copy key yang benar dari aistudio.google.com/app/apikey');
     } else {
       showError('Error: ' + err.message);
@@ -960,16 +1300,13 @@ Requirements:
 function renderOutput(d, topic, ts) {
   lastOutput = d;
 
-  // Meta
   const date = new Date(ts);
   document.getElementById('output-meta').textContent =
     `Generated ${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
 
-  // Hook & Title
   document.getElementById('hook-body').textContent =
     `🎬 TITLE:\n${d.youtube_title || d.title}\n\n⚡ HOOK (first 3 seconds):\n"${d.hook}"\n\n🖼️ THUMBNAIL CONCEPT:\n${d.thumbnail_concept}`;
 
-  // Scenes
   const scenesEl = document.getElementById('scenes-body');
   scenesEl.innerHTML = '';
   if (d.scenes && d.scenes.length) {
@@ -998,10 +1335,8 @@ function renderOutput(d, topic, ts) {
     });
   }
 
-  // Visual direction
   document.getElementById('visual-body').textContent = d.visual_direction || '';
 
-  // Voice & Music chips
   const vs = d.voice_settings || {};
   const chips = [
     { text: vs.tone || '', hl: true },
@@ -1013,14 +1348,11 @@ function renderOutput(d, topic, ts) {
   document.getElementById('voice-music-chips').innerHTML =
     chips.map(c => `<div class="chip${c.hl?' highlight':''}">${c.text}</div>`).join('');
 
-  // InVideo prompt
   document.getElementById('invideo-prompt').textContent = d.invideo_prompt || '';
 
-  // SEO
   document.getElementById('seo-body').textContent =
     `📌 TITLE:\n${d.youtube_title || d.title}\n\n📝 DESCRIPTION:\n${d.youtube_description}\n\n🏷️ TAGS:\n${(d.tags||[]).join(', ')}`;
 
-  // Show output
   document.getElementById('output-section').style.display = 'block';
   document.getElementById('output-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
