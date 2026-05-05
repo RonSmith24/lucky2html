@@ -566,7 +566,7 @@ footer {
 
   <header>
     <div class="logo-block">
-      <div class="logo-tag">&#9654; VidForge AI — v2.0 (Free)</div>
+      <div class="logo-tag">&#9654; VidForge AI — v2.1 (Free · ID Region Fix)</div>
       <h1>YouTube Video<br/><em>Generator</em></h1>
     </div>
     <div class="header-badge">
@@ -756,7 +756,7 @@ footer {
   </div>
 
   <footer>
-    VidForge AI v2.0 · Built for Faceless YouTube Creators · Powered by Google Gemini (Free)
+    VidForge AI v2.1 · Built for Faceless YouTube Creators · Powered by Google Gemini 1.5 Flash (Free)
   </footer>
 </div>
 
@@ -907,7 +907,7 @@ Requirements:
 - Make it viral-worthy`;
 
   try {
-    const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+    const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
     const resp = await fetch(geminiUrl, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
